@@ -1,0 +1,112 @@
+@use '@Styles/mixin';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+@import '~bootstrap/dist/css/bootstrap-grid.min.css';
+@import '~react-rater/lib/react-rater.css';
+@import '~animate.css/animate.compat.css';
+
+@import '~slick-carousel/slick/slick-theme.scss';
+@import '~slick-carousel/slick/slick.scss';
+@import '@Styles/variables';
+@import '@Styles/utilities';
+@import '@Styles/select';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--light-5);
+    font-family: 'Roboto', sans-serif;
+
+    &.modal-open {
+        overflow: hidden;
+    }
+
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    & > #__next {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ol,
+ul {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 100%;
+    list-style: none;
+    vertical-align: baseline;
+}
+
+.container,
+[class*='col'] {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+}
+
+.container {
+    @include mixin.desktop {
+        max-width: 1170px;
+    }
+    @include mixin.mobile {
+        max-width: 100%;
+    }
+    @include mixin.tablet {
+        max-width: 100%;
+    }
+}
+
+.row {
+    margin-left: calc(var(--space-8) * -1);
+    margin-right: calc(var(--space-8) * -1);
+}
+
+.react-rater-star {
+    font-size: 20px;
+    color: var(--light);
+    margin-right: var(--space-8);
+
+    &::before {
+        background: -webkit-linear-gradient(135deg, #ffcd5e 0%, #ea9a22 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &.is-active,
+    &.will-be-active {
+        background: -webkit-linear-gradient(135deg, #ffcd5e 0%, #ea9a22 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.ReactCollapse--collapse {
+    padding: 0px;
+    transition: height 500ms;
+}
+
+.medicine-detail,
+.user-review {
+    .react-rater {
+        div {
+            margin-right: var(--space-4);
+
+            .react-rater-star {
+                margin-right: 0;
+                font-size: var(--font-14);
+            }
+        }
+    }
+}

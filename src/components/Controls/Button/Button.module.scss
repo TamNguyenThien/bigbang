@@ -1,0 +1,82 @@
+@use '@Styles/colors';
+
+$text-secondary-color: (
+    'red': 'red-3',
+    'light': 'light',
+    'blue': 'brand',
+    'yellow': 'yellow-1',
+);
+
+.btn {
+    width: max-content;
+    padding: 0 var(--space-16);
+
+    cursor: pointer;
+    font-weight: bold;
+    font-size: var(--font-16);
+    border-radius: var(--radius-8);
+
+    &:focus,
+    &:active {
+        outline: none;
+        box-shadow: none;
+    }
+
+    &:disabled {
+        opacity: 0.2;
+        cursor: not-allowed;
+    }
+
+    &.btn_normal {
+        height: 48px;
+    }
+
+    &.btn_small {
+        height: 40px;
+    }
+
+    &.btn_compact {
+        height: 32px;
+    }
+
+    &.btn_full {
+        width: 100%;
+    }
+
+    &.btn_loading {
+        .loading {
+            transform-origin: center;
+            animation-name: spinning;
+            animation-duration: 0.4s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    @each $name, $color in colors.$colors {
+        &.btn_#{'' + $name} {
+            border: solid $color;
+            background-color: $color;
+        }
+    }
+
+    &.btn_primary {
+        color: var(--white);
+    }
+
+    @each $name, $color in $text-secondary-color {
+        &.btn_secondary_#{'' + $name} {
+            color: var(#{'--' + $color});
+        }
+    }
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
